@@ -1,0 +1,14 @@
+public class tree {
+    public static void main(String[] args) {
+        int height = 4;
+        System.out.println("I");
+        for (int i= 1; i<=height; i++){
+            for (int n =0; n<i; n++) {
+                System.out.print("XY");
+            }
+            System.out.println(" ");
+        }
+        System.out.println("M");
+
+    }
+}
