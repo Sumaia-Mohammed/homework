@@ -1,0 +1,19 @@
+public class Exercise_2 {
+    public static void main(String[] args) {
+
+        String feminine ="Katze";
+        String masculine ="Hund";
+
+        System.out.println("isFeminineNoun"+"("+isFeminineNoun(feminine,masculine)+")");
+        System.out.println(" ");
+        System.out.println("isFeminineNoun"+"("+isFeminineNoun(masculine,masculine)+")");
+    }
+    public static String isFeminineNoun(String feminine ,String masculine) {
+     String nn = feminine;
+            if (feminine.contains("e") || feminine.contains("ung")) {
+                System.out.println(">true");
+            } else if (!masculine.contains("e") && !feminine.contains("ung")) {
+                System.out.println(">false");
+            }return nn;
+    }
+}
