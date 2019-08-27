@@ -1,4 +1,4 @@
-public class Power.1 {
+public class Power_2 {
     public static void main(String[] args) {
 
         System.out.println("square(1,3)");
