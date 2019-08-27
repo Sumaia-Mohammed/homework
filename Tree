@@ -1,4 +1,4 @@
-public class tree {
+public class Tree {
     public static void main(String[] args) {
         int height = 4;
         System.out.println("I");
