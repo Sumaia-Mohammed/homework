@@ -1,4 +1,8 @@
-package PACKAGE_NAME;
+public class SmallestElement extends Number {
 
-public class SmallestElement {
+    public SmallestElement(int number){
+        super(number);
+    }
+
+
 }

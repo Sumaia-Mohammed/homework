@@ -1,4 +1,14 @@
-package PACKAGE_NAME;
+public class Circle extends Shape{
 
-public class Circle {
+double radius ;
+
+Circle ( double radius){
+    this.radius= radius;
+
+}
+
+public double calculateArea(){
+    return Math.PI * radius * radius;
+}
+
 }

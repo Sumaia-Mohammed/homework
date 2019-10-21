@@ -1,12 +1,22 @@
-public abstract class ExerciseIntegers {
-    private int number ;
+import java.util.ArrayList;
 
-    public Number (int number ){
+public abstract class Number {
+    private int number;
+
+    public Number(int number) {
         this.number = number;
     }
 
-    public Integer getNumber (){
+    public Integer smallNumber() {
         return number;
+
     }
 
+    public Integer smallNumber (ArrayList < Integer > number) {
+        ArrayList<Integer> newArraylist = new ArrayList<>();
+        for (int i = number.size() - 1; i >= 0; i--) {
+            newArraylist.add(number.get(i));
+        }
+        return smallNumber();
+    }
 }

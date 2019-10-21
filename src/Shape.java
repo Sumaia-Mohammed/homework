@@ -1,4 +1,7 @@
-package PACKAGE_NAME;
+public abstract class Shape {
 
-public class Shape {
+    public abstract double calculateArea();
+
+
+
 }

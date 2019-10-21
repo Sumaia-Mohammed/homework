@@ -1,4 +1,15 @@
-package PACKAGE_NAME;
+public class Rectangle extends Shape {
+    double width ;
+    double length ;
 
-public class Rectangle {
+    Rectangle ( double width, double length){
+        this.width= width;
+        this.length= length;
+
+    }
+
+    public double calculateArea(){
+        return  width * length;
+    }
+
 }
