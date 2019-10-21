@@ -4,15 +4,15 @@ import java.util.Set;
 
 public class Pizza {
     private String name;
-    private Set<String>ingredients;//mokawenat
+    private Set<String>ingredients;
     private double price;
-    private String description;//wasaf
+    private String description;
 
     public Pizza(String name, Set<String> ingredients, double price, String description) {
         this.name = name;
-        this.ingredients = ingredients;//mokawenat
+        this.ingredients = ingredients;
         this.price = price;
-        this.description = description;//wasf
+        this.description = description;
     }
 
     public String printMenuItem(){
