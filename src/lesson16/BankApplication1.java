@@ -24,18 +24,53 @@ public class BankApplication1 {
         payments.put(salaryOctober.getId(), salaryOctober);
         payments.put(salaryNovember.getId(), salaryNovember);
 
-        int summ = 0;
-        String monat = " ";
+
+        Payment1 theBiggestPayment = null;
+        for(Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
+            if (entry.getValue().getAmount() >= 0) {
+                continue;
+            }
+
+            if (theBiggestPayment == null) {
+                theBiggestPayment = entry.getValue();
+            }
+
+            if (theBiggestPayment.getAmount() > entry.getValue().getAmount()) {
+                theBiggestPayment = entry.getValue();
+            }
+        }
+
+        System.out.println("The biggest payment is " + theBiggestPayment.printPayment());
+
+
+        int sum = 0;
+        for (Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
+            if (entry.getValue().getAmount() >= 0) {
+                sum += entry.getValue().getAmount();
+            }
+        }
+        System.out.println("The total income is: " + sum+"$");
+
+        Map<String, Double> inCategories = new HashMap<>();
+        char c ='$';
         for (Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
             Payment1 payment = entry.getValue();
-            int month = payment.getMonth();
+            String category = payment.getCategory();
 
-          /*  double amount = payment.getAmount();
-            amount +=amount;*/
+            double categorySum = inCategories.getOrDefault(category, 0.0);
+            categorySum += payment.getAmount();
 
-          if (entry.getValue().getAmount() < 0) {
-              summ += entry.getValue().getAmount();
-          }
+            inCategories.put(category, categorySum);
+
+        }
+        System.out.println("How do spend your money: "+inCategories+c);
+
+        double summ = 0;
+        String monat = " ";
+        Map<String, Double> inMonth = new HashMap<>();
+        for (Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
+            Payment1 payment = entry.getValue();
+          int month =payment.getMonth ();
 
             String monthString;
             switch (month) {
@@ -79,65 +114,22 @@ public class BankApplication1 {
                     monthString = "Invalid month";
                     break;
             }
-            monat=monthString;
-
-            //System.out.println(monthString);
-           // System.out.println("In " +monat +" you spent: "+amount+"$"+ " and earned: " +amount+"$");
-            System.out.println("In " +monat +" you spent: "+summ+"$");
-
-        }
-
-        Payment1 theBiggestPayment = null;
-        for(Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
-            if (entry.getValue().getAmount() >= 0) {
-                continue;
-            }
-
-            if (theBiggestPayment == null) {
-                theBiggestPayment = entry.getValue();
-            }
-
-            if (theBiggestPayment.getAmount() > entry.getValue().getAmount()) {
-                theBiggestPayment = entry.getValue();
-            }
-        }
-
-        System.out.println("The biggest payment is " + theBiggestPayment.printPayment());
-
-
-        int sum = 0;
-        for (Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
-            if (entry.getValue().getAmount() >= 0) {
-                sum += entry.getValue().getAmount();
-            }
-        }
-        System.out.println("The total income is: " + sum+"$");
-
-        Map<String, Double> inCategories = new HashMap<>();
-        for (Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
-            Payment1 payment = entry.getValue();
-            String category = payment.getCategory();
-
-            double categorySum = inCategories.getOrDefault(category, 0.0);
-            categorySum += payment.getAmount();
-            inCategories.put(category, categorySum);
-        }
-
-        //ortedMap tailMap = sortedMap.tailMap("c");
-        System.out.println(inCategories);
-
-       /* Map<String, Double> inMonth = new HashMap<>();
-        for (Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
-            Payment1 payment = entry.getValue();
-            String month = monat;
-
-            double monthSum = inMonth.getOrDefault(month, 0.0);
+           // monat= monthString;
+            double monthSum = inMonth.getOrDefault(monthString, 0.0);
             monthSum += payment.getAmount();
-            inMonth.put(month, monthSum);
-        }
-        System.out.println(inMonth);*/
+            inMonth.put(monthString, monthSum);
 
-        Map<Integer, Double> inMonth = new HashMap<>();
+            // summ= monthSum;
+             System.out.println("In " +monthString +" you spent: "+monthSum+"$");
+            // System.out.println("In " +monat +" you spent: "+amount+"$"+ " and earned: " +amount+"$");
+            monat= monthString;
+    }
+        System.out.println(inMonth);
+
+
+
+
+      /*  Map<Integer, Double> inMonth = new HashMap<>();
         for (Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
             Payment1 payment = entry.getValue();
             int month = payment.getMonth();
@@ -145,8 +137,8 @@ public class BankApplication1 {
             double monthSum = inMonth.getOrDefault(month, 0.0);
             monthSum += payment.getAmount();
             inMonth.put(month, monthSum);
-        }
-        System.out.println(inMonth);
+        }*/
+        //System.out.println(inMonth);
 
         System.out.println(" Enter what statistics you want to see:");
         Scanner scanner = new Scanner(System.in);
@@ -171,12 +163,14 @@ public class BankApplication1 {
             case 4:
                 System.out.println("> Enter a year: ");
                 int year = scanner.nextInt();
-                for (Map.Entry<Integer, Payment1> entry: payments.entrySet()) {
-                    if (entry.getValue().getYear() >= 0) {
-                        year+= entry.getValue().getYear();
+                for (Map.Entry<Integer,Payment1>entry : payments.entrySet()) {
+                    Payment1 payment = entry.getValue();
+                    if (year==payment.getYear()) {
+                      //  System.out.println(payment.printPayment());
+                        System.out.println(payment.printY());
+                      //  System.out.println("In " +monat+" "+payment.getYear()+" you spent: "+payment.getAmount()+"$");
                     }
-                }
-                System.out.println(year);
+                }System.out.println(year);
                 break;
             case 5:
                 System.out.println("exit");

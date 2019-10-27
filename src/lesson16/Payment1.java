@@ -41,4 +41,8 @@ public class Payment1 {
         return id + ": [" + amount+"$"+ ", " + category + ", " + month + ", " + year + "]";
     }
 
+    public String printY() {
+        return "In "+month+" "+year+ " you spent: "+amount+"$"+" and earned: "+ 2300+"$";
+    }
+
 }
