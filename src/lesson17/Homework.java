@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Homework {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         Scanner scanner = new Scanner(System.in);
         System.out.println("choose which operation you want to perform");
         System.out.println("1.Divide 3 by a number entered by the user (3/x).\n" +
@@ -27,9 +27,9 @@ public class Homework {
                     break;
                 case 2:
                     System.out.println(Math.sqrt(numberInput));
-                    if( numberInput <0){
+                    if (numberInput < 0) {
                         throw new InputMismatchException("Only Positive Numbers!");
-                       // throw new IllegalArgumentException("Only Positive Numbers!");
+                        // throw new IllegalArgumentException("Only Positive Numbers!");
                     }
                     break;
                 case 3:
@@ -40,21 +40,25 @@ public class Homework {
 
             FileInputStream inputStream = new FileInputStream(new File("/some/path" + numberInput));
 
-        } catch (FileNotFoundException fnfE) {
-            System.out.println("Some thing bad happened:" + fnfE.getMessage());
+            inputStream.close();
 
-        } catch (NumberFormatException numberFormat) {
-            System.out.println("Type a number!");
+            } catch(FileNotFoundException fnfE){
+                System.out.println("Some thing bad happened:" + fnfE.getMessage());
 
-        } catch (ArithmeticException bZ) {
-            System.out.println("It's not possible to divide by 0!" + bZ.getMessage());
+            } catch(NumberFormatException numberFormat){
+                System.out.println("Type a number!");
 
-        }catch (InputMismatchException e){
-            System.out.println(e.getMessage());
+            } catch(ArithmeticException bZ){
+                System.out.println("It's not possible to divide by 0!" + bZ.getMessage());
 
-        }/*catch (IllegalArgumentException e){
+            }catch(InputMismatchException e){
+                System.out.println(e.getMessage());
+
+            }/*catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }*/
 
-    }
+
+        }
+
 }

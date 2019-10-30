@@ -19,6 +19,8 @@ public class BankAplication {
         payments.put(rentOctober.getId(),rentOctober);
         payments.put(rentNovember.getId(),rentNovember);
         payments.put(foodRewe.getId(),foodRewe);
+        payments.put(salaryOctober.getId(),salaryOctober);
+        payments.put(salaryNovember.getId(),salaryNovember);
 
         double f = 1000;
         int min=0;
@@ -31,6 +33,9 @@ public class BankAplication {
            }
            }
        }
+        System.out.println(min);
+        System.out.println("The biggest payment is: "+payments.get(min).print());
+
         int sum = 0;
         for(Map.Entry<Integer,Payment>entry :payments.entrySet()) {
             if (entry.getValue().getAmount() >= 0) {
@@ -42,8 +47,6 @@ public class BankAplication {
 
 
 
-        System.out.println(min);
-        System.out.println( payments.get(min).print());
        // System.out.println( payments.get(min).printTotal());
 
 
