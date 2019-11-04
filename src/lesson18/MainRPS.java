@@ -20,55 +20,90 @@ public class MainRPS {
         strG = Ex3.get(game);
 
         System.out.println("Enter choice \n R= Rock \n P= paper \n S= scissor \n");
-        strUserG = scanner.next();
 
-try {
+        int point = 0;
+        int remaining =5 ;
+        try {
 
-    if (strUserG.equalsIgnoreCase((String) strG)) {
-        throw new Ex3("same result");
 
-    } else if (strUserG.equalsIgnoreCase(rock) && ((String) strG).equalsIgnoreCase(scissor)) {
-        System.out.println("User Choices:" + strUserG);
-        System.out.println("Computer Choices:" + strG);
-        throw new Ex3("You win");
+            while (remaining>0){
 
-    } else if (strUserG.equals(scissor) && ((String) strG).equalsIgnoreCase(rock)) {
-        System.out.println("You lose");
-        System.out.println("User Choices:" + strUserG);
-        System.out.println("Computer Choices:" + strG);
-        throw new Ex3("Try Again");
+                strUserG = scanner.next();
 
-    } else if (strUserG.equals(paper) && ((String) strG).equalsIgnoreCase(rock)) {
-        System.out.println("User Choices:" + strUserG);
-        System.out.println("Computer Choices:" + strG);
-        throw new Ex3("You win");
+                if (strUserG.equals("skip")) {
+               point--;
+               remaining--;
+         }
+          else if (strUserG.length() > 1) {
+                throw new Ex3("Please type one letter!!");
 
-    } else if (strUserG.equals(rock) && ((String) strG).equalsIgnoreCase(paper)) {
-        System.out.println("You lose");
-        System.out.println("User Choices:" + strUserG);
-        System.out.println("Computer Choices:" + strG);
-        throw new Ex3("Try Again");
+        } else if (strUserG.equalsIgnoreCase((String)strG)) {
+              System.out.println("same result");
+                remaining--;
 
-    } else if (strUserG.equals(scissor) && ((String) strG).equalsIgnoreCase(paper)) {
-        System.out.println("User Choices:" + strUserG);
-        System.out.println("Computer Choices:" + strG);
-        throw new Ex3("You win");
+        } else if (strUserG.equalsIgnoreCase(rock) && ((String) strG).equalsIgnoreCase(scissor)) { System.out.println("User Choices:" + strUserG);
+              System.out.println("Computer Choices:" + strG);
+              System.out.println("You win");
+                point++;
+                remaining--;
 
-    } else if (strUserG.equals(paper) && ((String) strG).equalsIgnoreCase(scissor)) {
-        System.out.println("You lose");
-        System.out.println("User Choices:" + strUserG);
-        System.out.println("Computer Choices:" + strG);
-        throw new Ex3("Try Again");
+        } else if (strUserG.equals(scissor) && ((String) strG).equalsIgnoreCase(rock)) {
+              System.out.println("Try Again");
+              System.out.println("User Choices:" + strUserG);
+              System.out.println("Computer Choices:" + strG);
+              System.out.println("You lose");
+               point--;
+               remaining--;
 
-    } else {
-        System.out.println(" play again");
-        System.out.println("Pick one of three Choice  (Format:  Rock, Paper, Scissor)");
+        } else if (strUserG.equals(paper) && ((String) strG).equalsIgnoreCase(rock)) {
+              System.out.println("User Choices:" + strUserG);
+              System.out.println("Computer Choices:" + strG);
+              System.out.println("You win");
+               point++;
+               remaining--;
 
-    }
-}catch (Ex3 e){
-    System.out.println(e.getMessage());
+        } else if (strUserG.equals(rock) && ((String) strG).equalsIgnoreCase(paper)) {
+              System.out.println("Try Again");
+              System.out.println("User Choices:" + strUserG);
+              System.out.println("Computer Choices:" + strG);
+              System.out.println("You lose");
+                point--;
+                remaining--;
 
-}
+        } else if (strUserG.equals(scissor) && ((String) strG).equalsIgnoreCase(paper)) {
+              System.out.println("User Choices:" + strUserG);
+              System.out.println("Computer Choices:" + strG);
+              System.out.println("You win");
+                point++;
+                remaining--;
+
+        } else if (strUserG.equals(paper) && ((String) strG).equalsIgnoreCase(scissor)) {
+              System.out.println("User Choices:" + strUserG);
+              System.out.println("Computer Choices:" + strG);
+              System.out.println("Try Again");
+              System.out.println("You lose");
+                point--;
+                remaining--;
+
+        } else {
+              System.out.println(" play again");
+              System.out.println("Pick one of three Choice  (Format:  Rock, Paper, Scissor)");
+        }
+
+             System.out.println("\tYou got: " +point);
+             System.out.println("\tTurns Remaining: " +remaining);
+
+                System.out.println("\tFinal result: ");
+
+             if (remaining==0){
+               System.out.println("Game over");
+             }
+        }
+
+      }catch (Ex3 e){
+         System.out.println(e.getMessage());
+
+      }
 
     }
 }
